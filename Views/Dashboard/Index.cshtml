@@ -1,0 +1,42 @@
+﻿
+@{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+@model IEnumerable<SaudiGuide.Models.Events>
+<div class="row mt-4 text-right">
+
+<h2>قائمة الأنشطة السياحية </h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>الصورة</th>
+            <th>الوصف</th>
+            <th>السعر</th>
+            <th>الإجراءات</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td><img src="@item.Img" alt="@item.Name" width="100" /></td>
+                <td>@item.Description</td>
+                <td>@item.Price ريال</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">تعديل</a> <br />
+                        <a asp-action="Delete" asp-route-id="@item.Id">حذف</a> <br />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>
+<a asp-action="Create" >إضافة حدث جديد</a>
+    </h4>
+
+    <br /> <br />
+</div>

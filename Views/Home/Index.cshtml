@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "الصفحة الرئيسية";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">أهم المدن</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card carousel-inne inactive-city">
+                <h3 class="city-name carousel-caption center">جازان</h3>
+                <img src="~/img/Jazan.jpg" class="card-img-top">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card carousel-inne inactive-city">
+                <h3 class="city-name carousel-caption center">حائل</h3>
+                <img src="~/img/hail.jpg" class="card-img-top" alt="حائل">
+            </div>
+        </div>
+
+        <a class="col-md-3" asp-action="Qassim">
+            <div class="card carousel-inner">
+                <h3 class="city-name carousel-caption center">القصيم</h3>
+                <img src="~/img/Qassim.jpg" class="card-img-top" alt="Qassim">
+            </div>
+        </a>
+
+        <div class="col-md-3">
+            <div class="card carousel-inne inactive-city">
+                <h3 class="city-name carousel-caption center">الرياض</h3>
+                <img src="~/img/riyadh.jpg" class="card-img-top" alt="الرياض">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .inactive-city {
+      opacity: 0.5;
+    }
+</style>

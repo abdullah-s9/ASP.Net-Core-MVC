@@ -1,0 +1,51 @@
+/*  ‰”Ìﬁ ⁄«„ */
+body {
+    font-family: Almarai;
+        font-weight: normal;
+    font-style: normal;
+}
+
+/*  ‰”Ìﬁ ‘—Ìÿ «· ‰ﬁ· */
+.navbar-dark {
+    background-color: #222;
+    padding: 10px 20px;
+}
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: white;
+    }
+
+/*  ‰”Ìﬁ header */
+.jumbotron {
+    background-image: url('../img/Main.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    text-align: center;
+    height: 250px;
+}
+
+/*  ‰”Ìﬁ ﬁ”„ "√Â„ «·„œ‰" */
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+.city-name {
+    position: center;
+    color: white;
+}
+
+/*  ‰”Ìﬁ «· –ÌÌ· */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+}

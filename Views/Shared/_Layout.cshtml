@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SaudiGuide</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Almarai' rel='stylesheet'>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Saudi Guide</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                @* <li class="nav-item"> *@
+                @*     <a class="nav-link" href="#">خروج</a> *@
+                @* </li> *@
+                <li class="nav-item">
+                    <a class="nav-link" href="#">الطلبات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">المفضلة</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-like"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">اكتشف المعالم الطبيعية والتاريخية</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>قصتنا</h5>
+                    <h5>أهدافنا</h5>
+                </div>
+                <div class="col-md-3">
+                    <h5>شركاء النجاح</h5>
+                    <h5>انضم كشريك</h5>
+                </div>
+                <div class="col-md-3">
+                    <h5><a style="text-decoration: none; color: inherit;" href="@Url.Action("Index", "Dashboard")">لوحة التحكم</a></h5>
+                    <h5> انضم كمرشد سياحي</h5>
+                </div>
+                <div class="col-md-3">
+                    <h5>المساعدة</h5>
+                    <h5>الأسئلة الشائعة</h5>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2023 SaudiGuide - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

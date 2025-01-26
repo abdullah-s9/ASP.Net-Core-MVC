@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "حصاة النصلة";
+}
+
+
+ @model List<Events>
+
+
+
+        @foreach (var ev in Model)
+        {
+
+       
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+                <h1 class="text-center">@ev.Name</h1>
+
+
+            <div class=" row">
+                    <div class=" col-md-6">
+                    </div>
+                <div class=" col-md-6">
+                        <img src="@ev.Img" class="d-block w-100" alt="حصاة النصلة 1" height="210px">
+                </div>
+
+
+            </div>
+
+            <h4 class="mt-4 text-right">الوصف</h4>
+            <p class="mt-4 text-right">
+                    @ev.Description
+            </p>
+                <p class="mt-4 text-right">
+
+                    <br />
+                    السعر :
+                    @ev.Price ريال
+                </p>
+                
+
+            <div class="text-right">
+                    <a asp-action="Booking" class="btn btn-primary">أحجز الآن </a>
+            </div>
+        </div>
+    </div>
+</div>
+}
