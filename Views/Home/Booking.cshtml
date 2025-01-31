@@ -1,28 +1,103 @@
 ﻿@model Reservations
-<div class="mt-4 text-right">
-    <h2>حجز طلب رحلة سياحية</h2>
-    <form asp-action="Confirmation" onsubmit="return validateForm()">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
 
-        <div class="form-group">
-            <label asp-for="Name" class="control-label"> الاسم كامل</label><br />
-            <input asp-for="Name" id="Name" required />
-            <span asp-validation-for="Name" class="text-danger"></span>
+<style>
+    .card {
+        direction: rtl;
+        font-family: 'Tajawal', sans-serif;
+    }
+
+    input.form-control {
+        border-radius: 25px;
+        padding: 15px 20px;
+    }
+
+    .btn-success {
+        border-radius: 30px;
+        padding: 10px 40px;
+        font-size: 1.2rem;
+    }
+
+    .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
+</style>
+<div class="container mt-5">
+    <div class="card shadow-lg" style="max-width: 600px; margin: auto; border-radius: 15px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">حجز طلب رحلة سياحية</h3>
         </div>
-        <div class="form-group">
-            <label asp-for="Phone" class="control-label"> رقم الجوال</label> <br />
-            <input asp-for="Phone" id="Phone"  required />
-            <span asp-validation-for="Phone" class="text-danger"></span>
+        <div class="card-body">
+            <form asp-action="Booking" method="post" onsubmit="return validateForm()">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group row mb-4">
+                    <label asp-for="Name" class="col-md-4 col-form-label text-right">الاسم الكامل</label>
+                    <div class="col-md-8">
+                        <input asp-for="Name" class="form-control" placeholder="أدخل اسمك الثلاثي" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                    <label asp-for="Phone" class="col-md-4 col-form-label text-right">رقم الجوال</label>
+                    <div class="col-md-8">
+                        <input asp-for="Phone" class="form-control" placeholder="05XXXXXXXX" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                    <label asp-for="Count" class="col-md-4 col-form-label text-right">عدد الأشخاص</label>
+                    <div class="col-md-8">
+                        <input type="number" asp-for="Count" class="form-control" placeholder="عدد الأشخاص" />
+                        <span asp-validation-for="Count" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                    <label asp-for="Type" class="col-md-4 col-form-label text-right">نوع الرحلة</label>
+                    <div class="col-md-8 text-right">
+                        <input type="radio" value="عائلية" asp-for="Type" id="Family" />
+                        <label for="Family">عائلية</label>
+
+                        <input type="radio" value="أفراد" asp-for="Type" id="Single" />
+                        <label for="Single">أفراد</label>
+
+                        <span asp-validation-for="Type" class="text-danger"></span> 
+                    </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                    <label asp-for="Date" class="col-md-4 col-form-label text-right">تاريخ الحجز</label>
+                    <div class="col-md-8">
+                        <input asp-for="Date" type="date" class="form-control"/>
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group text-center mt-5">
+                    <button type="submit" class="btn btn-success btn-lg px-5">
+                        <i class="fas fa-check-circle"></i> تأكيد الحجز
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label asp-for="Date" class="control-label"> حدد تاريخ الحجز</label><br />
-            <input asp-for="Date" id="Date" required />
-            <span asp-validation-for="Date" class="text-danger"></span>
-        </div> <br />
-        <div class="form-group">
-            <input type="submit" value="تأكيد الحجز" class="btn btn-primary" />
-        </div>
-    </form>
+    </div>
 </div>
 
+@section Scripts {
+    <script>
+        function validateForm() {
+            const phoneRegex = /^05\d{8}$/;
+            const phoneInput = document.getElementById('Phone');
+
+            if (!phoneRegex.test(phoneInput.value)) {
+                alert('رقم الجوال يجب أن يبدأ بـ 05 ويحتوي على 10 أرقام');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+}

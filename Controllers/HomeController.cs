@@ -62,6 +62,29 @@ namespace SaudiGuide.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Booking(Reservations reservation)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Add(reservation);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Confirmation));
+                }
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError("", "ÕœÀ Œÿ√ √À‰«¡ Õ›Ÿ «·»Ì«‰« . Ì—ÃÏ «·„Õ«Ê·… „—… √Œ—Ï.");
+                    _logger.LogError(ex, "Error saving reservation");
+                }
+            }
+            return View(reservation);
+        }
+
+   
         public IActionResult Confirmation()
         {
 

@@ -17,8 +17,15 @@ namespace SaudiGuide.Models
 
         [Required(ErrorMessage = "الرجاء تحديد تاريخ الحجز")]
         [DataType(DataType.Date, ErrorMessage = "تاريخ الحجز غير صحيح")]
+        [FutureDate(ErrorMessage = "التاريخ يجب أن يكون في المستقبل")] 
 
         public DateTime Date { get; set; }
+
+        [Required(ErrorMessage = "الرجاء إدخال عدد الاشخاص")]
+        public int Count { get; set; }
+        [Required(ErrorMessage = "الرجاء إدخال نوع الرحلة")]
+
+        public string Type { get; set; }
 
 
 

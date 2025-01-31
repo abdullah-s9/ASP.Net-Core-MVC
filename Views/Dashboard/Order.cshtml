@@ -1,0 +1,49 @@
+﻿@model List<Reservations>
+
+@{
+    ViewData["Title"] = "طلبات الحجز";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+
+}
+
+<div class="container mt-5">
+    <h2 class="text-right mb-4">قائمة طلبات الحجز</h2>
+
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>الاسم</th>
+                <th>رقم الجوال</th>
+                <th>التاريخ</th>
+                <th>عدد الأشخاص</th>
+                <th>نوع الرحلة</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in Model)
+            {
+                <tr>
+                    <td>@reservation.Name</td>
+                    <td>@reservation.Phone</td>
+                    <td>@reservation.Date.ToString("yyyy-MM-dd")</td>
+                    <td>@reservation.Count</td>
+                    <td>@reservation.Type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table {
+        direction: rtl;
+        font-family: 'Tajawal', sans-serif;
+    }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+</style>

@@ -16,7 +16,6 @@ namespace SaudiGuide.Controllers
             _context = context;
         }
 
-        // GET: Dashboard/Index
         [Authorize]
         public IActionResult Index()
         {
@@ -24,14 +23,11 @@ namespace SaudiGuide.Controllers
             return View(events);
         }
 
-        // GET: Dashboard/Create
         public IActionResult Create()
         {
             return View();
         }
-        // POST: Dashboard/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Img,Description,Price")] Events events)
         {
             if (id != events.Id)
@@ -48,7 +44,6 @@ namespace SaudiGuide.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    // ... (التعامل مع الأخطاء) ...
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -71,7 +66,6 @@ namespace SaudiGuide.Controllers
         }
         // POST: Dashboard/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(Events events)
         {
             if (ModelState.IsValid)
@@ -100,7 +94,6 @@ namespace SaudiGuide.Controllers
             return View(events);
         }
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var events = await _context.Events.FindAsync(id);
@@ -109,6 +102,13 @@ namespace SaudiGuide.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize]
+        public IActionResult Order()
+        {
+            var reservations = _context.Reservations .ToList();
+
+            return View(reservations);
+        }
 
 
 
